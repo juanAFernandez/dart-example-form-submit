@@ -5,7 +5,7 @@
     <element name="person-form" constructor="PersonForm" extends="div">
       <template>
         <div id="message"></div>
-        <form method="post">
+        <form method="post" on-submit="submit($event)">
           <input type="text" bind-value="person.firstName" name="firstName">
           <input type="text" bind-value="person.lastName" name="lastName">
           <input type="number" bind-value-as-number="person.age" name="age">

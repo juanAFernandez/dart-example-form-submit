@@ -6,20 +6,18 @@ class PersonForm extends WebComponent {
   Person person;
   String action;
   
-  inserted() {
-    FormElement form = host.query('form');
+  submit(Event e) {
+    e.preventDefault();
+    
+    FormElement form = e.target as FormElement;
     form.action = action;
     
-    form.onSubmit.listen((Event e) {
-      e.preventDefault();
-      
-      HttpRequest.request(form.action,
-            method:form.method,
-            sendData:new FormData(form))
-          .then((HttpRequest req) {
-            host.query('#message').text = req.responseText;
-          })
-          .catchError((e) => print(e));
-    });
+    HttpRequest.request(form.action,
+          method:form.method,
+          sendData:new FormData(form))
+        .then((HttpRequest req) {
+          host.query('#message').text = req.responseText;
+        })
+        .catchError((e) => print(e));
   }
 }
