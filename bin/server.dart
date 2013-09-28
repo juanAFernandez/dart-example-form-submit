@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'package:http_server/http_server.dart';
 
 main() {
   HttpServer.bind('0.0.0.0', 8888).then((HttpServer server) {
+    print('Server is running');
     server.listen((HttpRequest req) {
       if (req.uri.path == '/submit' && req.method == 'POST') {
         print('received submit');
