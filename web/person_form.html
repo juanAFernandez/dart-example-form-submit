@@ -3,7 +3,7 @@
 <polymer-element name="person-form" attributes="action">
   <template>
     <div id="message"></div>
-    <form method="post" on-submit="submit">
+    <form method="post" on-submit="{{doSubmit}}">
       <div>
         First name: <input type="text" value="{{person.firstName}}" name="firstName">
       </div>
@@ -11,7 +11,7 @@
         Last name: <input type="text" value="{{person.lastName}}" name="lastName">
       </div>
       <div>
-        Age: <input type="number" value="{{person.age}}" name="age">
+        Age: <input type="number" value="{{person.age | asInteger}}" name="age">
       </div>
       <div>
         <input type="submit">
